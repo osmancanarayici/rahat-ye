@@ -16,7 +16,7 @@ isteyenler için, internet olmadan da çalışan mini bir React Native (Expo) uy
 
 Gereksinimler: Node.js (LTS) ve telefonda Expo Go uygulaması.
 
-```bash
+```
 git clone https://github.com/osmancanarayici/rahat-ye.git
 cd rahat-ye
 npm install
@@ -53,4 +53,10 @@ src/
 
 ## Yapılmayanlar / geliştirme fikirleri
 
-TypeScript, dark mode ve unit test eklenmedi. Başarısız kayıtların internet gelince otomatik yeniden gönderilmesi eklenebilir.
+TypeScript, dark mode ve unit test eklenmedi. Başarısız kayıtların internet gelince otomatik yeniden gönderilmesi eklenebilir.Ben ekstraları eklemedim.
+
+## Geliştirme süreci
+
+Bu projeyi geliştirirken yapay zekâ asistanından (Claude) yardım aldım. Kodu
+adım adım birlikte yazdık. Her dosyanın ne yaptığını, verinin ekranlar ve
+storage arasında nasıl aktığını ve tasarım kararlarının nedenlerini tek tek anlattırıp kendim eklemeye çalıştım çoğunu açıklayabilirim.
