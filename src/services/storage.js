@@ -22,3 +22,4 @@ export async function markAsSynced(id) {
   const updated = meals.map((m) => (m.id === id ? { ...m, synced: true } : m));
   await AsyncStorage.setItem(KEY, JSON.stringify(updated));
 }
+//

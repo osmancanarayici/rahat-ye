@@ -1,24 +1,21 @@
-
-
-https://github.com/user-attachments/assets/0dedb58b-e3f0-473f-935e-926798b8bee5
+🇬🇧 English | [🇹🇷 Türkçe](README.tr.md)
 
 # Rahat Ye 🍽️
 
-Yedikleri yemekleri ve sonrasında yaşadıkları mide rahatsızlıklarını kaydetmek
-isteyenler için, internet olmadan da çalışan mini bir React Native (Expo) uygulaması.
+A small React Native (Expo) app for logging what you eat and any stomach discomfort you feel afterwards. It works offline.
 
-## Özellikler
+## Features
 
-- Yemek adı, kategori (ev yemeği / restoran / paketli gıda) ve tetikleyiciler (acılı, süt ürünü, glüten, kızartma vb.)
-- 1-5 arası rahatsızlık şiddeti ve şikayet tipi (şişkinlik, kramp, reflü vb.)
-- Yemek adı boşsa "Gönder" butonu devre dışı kalır ve hata mesajı gösterilir
-- Veriler telefonun yerel hafızasında saklanır, internet olmasa da kaybolmaz
-- Geçmiş ekranında kayıtlar tarihleriyle birlikte listelenir
-- Sahte sunucu: 1.5 sn gecikme, yükleniyor göstergesi, %10 hata ihtimali, "Tekrar dene" seçeneği ve başarı mesajı
+- Meal name, category (home-cooked / restaurant / packaged food) and triggers (spicy, dairy, gluten, fried, etc.)
+- Discomfort severity from 1 to 5 and symptom type (bloating, cramps, reflux, etc.)
+- If the meal name is empty, the "Submit" button is disabled and an error message is shown
+- Data is stored in the phone's local storage, so it isn't lost when offline
+- The history screen lists entries with their dates
+- Fake server: 1.5 s delay, loading indicator, 10% failure rate, a "Retry" option and a success message
 
-## Kurulum
+## Setup
 
-Gereksinimler: Node.js (LTS) ve telefonda Expo Go uygulaması.
+Requirements: Node.js (LTS) and the Expo Go app on your phone.
 
 ```
 git clone https://github.com/osmancanarayici/rahat-ye.git
@@ -27,40 +24,38 @@ npm install
 npx expo start
 ```
 
-Terminalde çıkan QR kodu Expo Go ile okut (telefon ve bilgisayar aynı Wi-Fi'da olmalı).
+Scan the QR code in the terminal with Expo Go (your phone and computer must be on the same Wi-Fi).
 
-## Klasör yapısı
+## Folder structure
 
 ```
-App.js                  Navigasyon (alt sekmeler)
+App.js                  Navigation (bottom tabs)
 src/
-  constants/options.js  Kategori, tetikleyici ve şikayet listeleri
-  services/storage.js   AsyncStorage ile yerel kayıt
-  services/fakeApi.js   Sahte sunucu (1.5 sn, %10 hata)
+  constants/options.js  Category, trigger and symptom lists
+  services/storage.js   Local storage with AsyncStorage
+  services/fakeApi.js   Fake server (1.5 s, 10% failure)
   screens/
-    KayitEkrani.js      Yemek kayıt formu
-    GecmisEkrani.js     Geçmiş kayıtlar listesi
+    KayitEkrani.js      Meal entry form
+    GecmisEkrani.js     History list
 ```
 
-## Neden bu kütüphaneler?
+## Why these libraries?
 
-- **Expo:** Android Studio/Xcode kurmadan hızlı geliştirme ve telefonda anında test.
-- **AsyncStorage:** Veri küçük ve basit bir liste. Hafif ve yeterli. SQLite gibi çözümler bu ölçekte gereksiz karmaşıklık olurdu.
-- **React Navigation (bottom tabs):** İki ekran (Kayıt, Geçmiş) arasında standart ve kolay geçiş.
-- **useState:** Uygulama küçük olduğu için Redux gibi bir state kütüphanesine gerek görülmedi.
+- **Expo:** Fast development and instant testing on a phone, without installing Android Studio/Xcode.
+- **AsyncStorage:** The data is a small, simple list. It's lightweight and enough. Something like SQLite would be unnecessary complexity at this scale.
+- **React Navigation (bottom tabs):** Standard and easy switching between two screens (Entry, History).
+- **useState:** The app is small, so a state library like Redux wasn't needed.
 
-## Tasarım kararları
+## Design decisions
 
-- **Önce yerel kayıt, sonra sunucu:** Kayıt önce telefona yazılır, sonra sahte sunucuya gönderilir. Gönderim başarısız olsa bile veri kaybolmaz, kullanıcı "Tekrar dene" diyebilir.
-- Yemek adı `trim()` ile kontrol edilir, sadece boşluk girilirse de hata verilir.
-- Geçmişte her kaydın sunucuya gönderilip gönderilmediği görünür.
+- **Local save first, then server:** Entries are written to the phone first, then sent to the fake server. Even if sending fails, no data is lost and the user can tap "Retry".
+- The meal name is checked with `trim()`, so an error is also shown if only spaces are entered.
+- The history shows whether each entry has been sent to the server.
 
-## Yapılmayanlar / geliştirme fikirleri
+## Not implemented / ideas
 
-TypeScript, dark mode ve unit test eklenmedi. Başarısız kayıtların internet gelince otomatik yeniden gönderilmesi eklenebilir.Ben ekstraları eklemedim.
+TypeScript, dark mode and unit tests were not added. Automatically resending failed entries when the connection returns could be added.
 
-## Geliştirme süreci
+## Development process
 
-Bu projeyi geliştirirken yapay zekâ asistanından (Claude) yardım aldım. Kodu
-adım adım birlikte yazdık. Her dosyanın ne yaptığını, verinin ekranlar ve
-storage arasında nasıl aktığını ve tasarım kararlarının nedenlerini tek tek anlattırıp kendim eklemeye çalıştım çoğunu açıklayabilirim.
+I used an AI assistant (Claude) while building this project. We wrote the code step by step together. I had it explain what each file does, how data flows between the screens and storage, and the reasoning behind each design decision, and I tried to add most of it myself. I can explain most of the codebase.

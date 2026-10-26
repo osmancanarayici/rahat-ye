@@ -208,3 +208,4 @@ const styles = StyleSheet.create({
   buttonDisabled: { backgroundColor: '#a5a5a5' },
   buttonText: { color: '#fff', fontSize: 18, fontWeight: '600' },
 });
+//
